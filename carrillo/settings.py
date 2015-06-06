@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_nvd3',
+    'djangobower',
     'encuestas'
 )
 
@@ -50,6 +52,30 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+)
+
+# Django-bower
+# ------------
+
+# Specifie path to components root (you need to use absolute path)
+APPLICATION_DIR = os.path.dirname(globals()['__file__'])
+
+BOWER_COMPONENTS_ROOT = os.path.join(APPLICATION_DIR, 'bower_components')
+
+BOWER_PATH = '/usr/local/bin/bower'
+
+BOWER_INSTALLED_APPS = (
+    'jquery',
+    'underscore',
+    'd3#3.3.13',
+    'nvd3#1.7.1',
+)
+
 
 ROOT_URLCONF = 'carrillo.urls'
 
